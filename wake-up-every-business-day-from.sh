@@ -26,7 +26,13 @@ if [ "$dayName" != "SA" -a "$dayName" != "SO" ]
 then
     selected=$(date +"%Y-%m-%d %H:%M:%S" -d "now + $dayIdx days 6:00")
     seconds=$(date -d"$selected" +%s)
+   
     echo "Restart PC at $selected (in seconds $seconds)"
+    sleepBeforeStop=60
+    message="Host will going to sleep in $sleepBeforeStop seconds. Restart is expected at $selected"
+    wall "$message"
+    notify-send -u critical -t 0 "$message"
+    sleep $sleepBeforeStop
     /usr/sbin/rtcwake -m $DEFAULT_OFF_MODE -t $seconds
 else
     echo "Wrong day calculated: $dayName"
