@@ -1,12 +1,13 @@
 #!/bin/bash
+basePath=$(dirname $0)
 messageStart="Start full update"
 echo "$messageStart"
-./notify-send-all.sh -u critical "$messageStart" &
+"$basePath"/notify-send-all.sh "$messageStart" 
 wall "$messageStart"
 
 apt full-upgrade -y
 
 messageEnd="Full update completed"
 echo "$messageEnd"
-./notify-send-all.sh -u critical "$messageEnd" &
+"$basePath"/notify-send-all.sh "$messageEnd" 
 wall "$messageEnd"
