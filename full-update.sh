@@ -11,3 +11,9 @@ messageEnd="Full update completed"
 echo "$messageEnd"
 "$basePath"/notify-send-all.sh "$messageEnd" 
 wall "$messageEnd"
+
+messageRemove="Remove all obsolete packages"
+echo "$messageRemove"
+"$basePath"/notify-send-all.sh "$messageRemove" 
+wall "$messageRemove"
+apt autoremove -y
