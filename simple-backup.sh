@@ -1,4 +1,5 @@
 #!/bin/bash
-notify-send "Start simple backup" &
+basePath=$(dirname $0)
+"$basePath"/notify-send-all.sh "Start simple backup" 
 rsync -ahE --info=progress2 --no-i-r --delete $1 $2
-notify-send "Simple backup completed" &
+"$basePath"/notify-send-all.sh "Simple backup completed" 
